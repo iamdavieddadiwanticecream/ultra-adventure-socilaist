@@ -1,4 +1,4 @@
-/* Base styles (shared by both themes) */
+/* Shared base styling */
 body {
   font-family: 'Courier New', monospace;
   text-align: center;
@@ -15,7 +15,7 @@ button {
   margin: 10px;
 }
 
-/* Light theme */
+/* Light mode */
 body.light-mode {
   background-color: #ffffff;
   color: #000000;
@@ -32,7 +32,7 @@ body.light-mode button:hover {
   color: #ffffff;
 }
 
-/* Dark theme */
+/* Dark mode */
 body.dark-mode {
   background-color: #121212;
   color: #f0f0f0;
