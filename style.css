@@ -1,4 +1,4 @@
-/* Shared base styling */
+/* Shared styling */
 body {
   font-family: 'Courier New', monospace;
   text-align: center;
@@ -15,7 +15,7 @@ button {
   margin: 10px;
 }
 
-/* Light mode */
+/* Light theme */
 body.light-mode {
   background-color: #ffffff;
   color: #000000;
@@ -32,7 +32,7 @@ body.light-mode button:hover {
   color: #ffffff;
 }
 
-/* Dark mode */
+/* Dark theme */
 body.dark-mode {
   background-color: #121212;
   color: #f0f0f0;
@@ -48,7 +48,8 @@ body.dark-mode button:hover {
   background-color: #ffffff;
   color: #121212;
 }
-/* Position Settings button in top-left */
+
+/* Settings Button - Top Left */
 .top-left {
   position: fixed;
   top: 10px;
@@ -56,27 +57,25 @@ body.dark-mode button:hover {
   z-index: 1000;
 }
 
-/* Settings menu styling */
+/* Settings Menu */
 .settings-menu {
   position: fixed;
-  top: 50px;
+  top: 60px;
   left: 10px;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 20px;
   border-radius: 8px;
   z-index: 999;
-  width: 200px;
+  width: 220px;
 }
 
-/* Light mode override for menu */
 body.light-mode .settings-menu {
   background-color: #ffffff;
   color: #000000;
   border: 1px solid #ccc;
 }
 
-/* Hide element */
 .hidden {
   display: none;
 }
