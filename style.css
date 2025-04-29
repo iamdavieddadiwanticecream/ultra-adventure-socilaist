@@ -76,6 +76,7 @@ body.light-mode .settings-menu {
   border: 1px solid #ccc;
 }
 
+/* Hide elements */
 .hidden {
   display: none;
 }
