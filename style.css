@@ -48,3 +48,35 @@ body.dark-mode button:hover {
   background-color: #ffffff;
   color: #121212;
 }
+/* Position Settings button in top-left */
+.top-left {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+/* Settings menu styling */
+.settings-menu {
+  position: fixed;
+  top: 50px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 999;
+  width: 200px;
+}
+
+/* Light mode override for menu */
+body.light-mode .settings-menu {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ccc;
+}
+
+/* Hide element */
+.hidden {
+  display: none;
+}
