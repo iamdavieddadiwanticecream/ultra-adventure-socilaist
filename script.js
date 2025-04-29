@@ -1,8 +1,8 @@
-let score = 0;
-const scoreDisplay = document.getElementById("score");
-const clickButton = document.getElementById("clickBtn");
+let production = 0;
+const outputDisplay = document.getElementById("score");
+const laborButton = document.getElementById("clickBtn");
 
-clickButton.addEventListener("click", () => {
-  score++;
-  scoreDisplay.textContent = score;
+laborButton.addEventListener("click", () => {
+  production++;
+  outputDisplay.textContent = production;
 });
