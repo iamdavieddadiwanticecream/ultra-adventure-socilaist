@@ -1,8 +1,8 @@
-/* General body styling */
+/* Dark mode base styling */
 body {
   font-family: 'Courier New', monospace;
-  background-color: #ffffff; /* White background */
-  color: #000000;            /* Black text */
+  background-color: #121212; /* Dark background */
+  color: #f0f0f0;            /* Light text */
   text-align: center;
   margin-top: 50px;
 }
@@ -11,15 +11,15 @@ body {
 button {
   padding: 15px 30px;
   font-size: 20px;
-  background-color: #000000; /* Black background */
+  background-color: #1f1f1f; /* Darker button */
   color: #ffffff;            /* White text */
-  border: 2px solid #000000;
+  border: 2px solid #ffffff;
   border-radius: 6px;
   cursor: pointer;
 }
 
-/* Optional: Button hover effect (still black & white) */
+/* Hover effect */
 button:hover {
   background-color: #ffffff;
-  color: #000000;
+  color: #121212;
 }
