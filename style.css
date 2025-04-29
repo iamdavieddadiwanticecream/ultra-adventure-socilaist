@@ -1,25 +1,50 @@
-/* Dark mode base styling */
+/* Base styles (shared by both themes) */
 body {
   font-family: 'Courier New', monospace;
-  background-color: #121212; /* Dark background */
-  color: #f0f0f0;            /* Light text */
   text-align: center;
   margin-top: 50px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Button styling */
 button {
   padding: 15px 30px;
-  font-size: 20px;
-  background-color: #1f1f1f; /* Darker button */
-  color: #ffffff;            /* White text */
-  border: 2px solid #ffffff;
+  font-size: 18px;
   border-radius: 6px;
+  border: 2px solid;
   cursor: pointer;
+  margin: 10px;
 }
 
-/* Hover effect */
-button:hover {
+/* Light theme */
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.light-mode button {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+body.light-mode button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Dark theme */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode button {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+body.dark-mode button:hover {
   background-color: #ffffff;
   color: #121212;
 }
