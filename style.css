@@ -1,16 +1,25 @@
+/* General body styling */
+body {
+  font-family: 'Courier New', monospace;
+  background-color: #ffffff; /* White background */
+  color: #000000;            /* Black text */
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Button styling */
 button {
   padding: 15px 30px;
   font-size: 20px;
-  background-color: #d32f2f;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  background-color: #000000; /* Black background */
+  color: #ffffff;            /* White text */
+  border: 2px solid #000000;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-body {
-  font-family: 'Courier New', monospace;
-  background-color: #f5f5f5;
-  text-align: center;
-  margin-top: 50px;
+/* Optional: Button hover effect (still black & white) */
+button:hover {
+  background-color: #ffffff;
+  color: #000000;
 }
