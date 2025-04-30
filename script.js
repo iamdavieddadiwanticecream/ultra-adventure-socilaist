@@ -1,7 +1,7 @@
 // Initial values
 let production = 0;
 let profit = 0;
-let taxRate = 0.1; // Player earns 10% of $10 consumer profit
+let taxRate = 10; // Leader gets 10% of consumer profit (i.e., $1 per $10)
 
 // DOM Elements
 const outputDisplay = document.getElementById("score");
@@ -31,39 +31,41 @@ if (savedTheme === "light") {
 // Initialize UI
 outputDisplay.textContent = production;
 profitDisplay.textContent = profit.toFixed(2);
-taxRateDisplay.textContent = (taxRate * 100).toFixed(0);
+taxRateDisplay.textContent = taxRate; // Display as percentage (e.g., 10 for 10% tax)
 
 // Clicker logic — player gets tax % of consumer profit
 laborButton.addEventListener("click", () => {
   production++;
 
-  const leaderCut = valuePerGood * taxRate;
+  // Calculate how much the leader (you) earn based on the tax rate
+  const leaderCut = valuePerGood * (taxRate / 100); // taxRate / 100 to convert from percentage
   profit += leaderCut;
 
+  // Update UI
   outputDisplay.textContent = production;
   profitDisplay.textContent = profit.toFixed(2);
 });
 
-// Tax rate control
+// Tax rate control (increase/decrease)
 increaseTaxBtn.addEventListener("click", () => {
-  if (taxRate < 1) {
-    taxRate += 0.01;
+  if (taxRate < 100) {
+    taxRate += 1; // Increment tax rate by 1%
     updateTaxDisplay();
   }
 });
 
 decreaseTaxBtn.addEventListener("click", () => {
   if (taxRate > 0) {
-    taxRate -= 0.01;
+    taxRate -= 1; // Decrease tax rate by 1%
     updateTaxDisplay();
   }
 });
 
 function updateTaxDisplay() {
-  taxRateDisplay.textContent = (taxRate * 100).toFixed(0);
+  taxRateDisplay.textContent = taxRate; // Update the displayed tax rate (in percentage)
 }
 
-// Theme toggle
+// Theme toggle (for light/dark mode)
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
   document.body.classList.toggle("light-mode");
