@@ -89,3 +89,28 @@ body.light-mode .settings-menu {
 }
 
 /* Optional: To keep the settings button unchanged, we don't need any modifications */
+
+/* Button focus styles */
+button:focus {
+  outline: 3px solid #ff6600; /* or any color that contrasts well */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .settings-menu {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;  /* Make it more mobile-friendly */
+  }
+}
+
+/* Button active state */
+button:active {
+  transform: scale(0.98); /* Slightly reduces size on click */
+}
