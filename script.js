@@ -11,9 +11,14 @@ const taxRateDisplay = document.getElementById("taxRateDisplay");
 
 const laborButton = document.getElementById("clickBtn");
 const themeToggle = document.getElementById("themeToggle");
+
 const settingsBtn = document.getElementById("settingsBtn");
 const settingsMenu = document.getElementById("settingsMenu");
 const closeSettings = document.getElementById("closeSettings");
+
+const propertyMenu = document.getElementById("propertyMenu");
+const propertyMenuBtn = document.getElementById("propertyBtn");
+const closePropertyBtn = document.getElementById("closeProperty");
 
 const increaseTaxBtn = document.getElementById("increaseTax");
 const decreaseTaxBtn = document.getElementById("decreaseTax");
@@ -32,31 +37,30 @@ if (savedTheme === "light") {
 // Initialize UI
 updateUI();
 
-// --- Gameplay Logic ---
+// --- Event Listeners ---
 
 // Clicker logic — player gets tax % of consumer profit
 laborButton.addEventListener("click", () => {
   production++;
-
-  // Calculate how much the leader (you) earn based on the tax rate
-  const leaderCut = valuePerGood * (taxRate / 100); // taxRate / 100 to convert from percentage
+  const leaderCut = valuePerGood * (taxRate / 100);
   profit += leaderCut;
-
   updateUI();
   saveGameState(production, profit, taxRate);
 });
 
+// Increase tax
 increaseTaxBtn.addEventListener("click", () => {
   if (taxRate < 100) {
-    taxRate += 5; // Increment tax rate by 5%
+    taxRate += 5;
     updateUI();
     saveGameState(production, profit, taxRate);
   }
 });
 
+// Decrease tax
 decreaseTaxBtn.addEventListener("click", () => {
   if (taxRate > 0) {
-    taxRate -= 5; // Decrease tax rate by 5%
+    taxRate -= 5;
     updateUI();
     saveGameState(production, profit, taxRate);
   }
@@ -69,12 +73,14 @@ function updateUI() {
   taxRateDisplay.textContent = taxRate;
 }
 
-// Theme toggle (for light/dark mode)
+// Theme toggle
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
   document.body.classList.toggle("light-mode");
 
-  const currentTheme = document.body.classList.contains("light-mode") ? "light" : "dark";
+  const currentTheme = document.body.classList.contains("light-mode")
+    ? "light"
+    : "dark";
   localStorage.setItem("theme", currentTheme);
 });
 
@@ -84,4 +90,12 @@ settingsBtn.addEventListener("click", () => {
 });
 closeSettings.addEventListener("click", () => {
   settingsMenu.classList.add("hidden");
+});
+
+// Property menu toggle
+propertyMenuBtn.addEventListener("click", () => {
+  propertyMenu.classList.toggle("hidden");
+});
+closePropertyBtn.addEventListener("click", () => {
+  propertyMenu.classList.add("hidden");
 });
