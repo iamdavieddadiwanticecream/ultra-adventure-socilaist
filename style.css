@@ -164,9 +164,4 @@ button:active {
 }
 
 /* ========================
-   Right-align Net Profit (Profit)
-======================== */
-.right-align {
-  text-align: right; /* Aligns text to the right */
-  margin-right: 10px; /* Adjust the margin to get the desired positioning */
-}
+   Right-align Net
