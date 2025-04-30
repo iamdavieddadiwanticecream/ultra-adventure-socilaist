@@ -5,17 +5,25 @@ function saveGameState(production, profit, taxRate) {
     profit,
     taxRate
   };
-  localStorage.setItem("gameData", JSON.stringify(gameData));
+  localStorage.setItem("myGame_gameData", JSON.stringify(gameData));
 }
 
 // Load saved game state
 function loadGameState() {
-  const saved = JSON.parse(localStorage.getItem("gameData"));
-  return saved || { production: 0, profit: 0, taxRate: 10 };
+  const saved = JSON.parse(localStorage.getItem("myGame_gameData"));
+  if (
+    saved &&
+    typeof saved.production === "number" &&
+    typeof saved.profit === "number" &&
+    typeof saved.taxRate === "number"
+  ) {
+    return saved;
+  }
+  return { production: 0, profit: 0, taxRate: 10 };
 }
 
 // Reset game state
 function resetGame() {
-  localStorage.removeItem("gameData");
+  localStorage.removeItem("myGame_gameData");
   location.reload();
 }
