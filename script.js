@@ -1,10 +1,12 @@
 // Initial values
 let production = 0;
 let profit = 0;
+let taxRate = 0.1; // 10%
 
 // DOM Elements
 const outputDisplay = document.getElementById("score");
 const profitDisplay = document.getElementById("profit");
+const taxRateDisplay = document.getElementById("taxRateDisplay");
 
 const laborButton = document.getElementById("clickBtn");
 const themeToggle = document.getElementById("themeToggle");
@@ -12,9 +14,11 @@ const settingsBtn = document.getElementById("settingsBtn");
 const settingsMenu = document.getElementById("settingsMenu");
 const closeSettings = document.getElementById("closeSettings");
 
-// Economic settings
-const valuePerGood = 10;  // Price per consumer good
-const taxRate = 0.1;  // 10% tax rate
+const increaseTaxBtn = document.getElementById("increaseTax");
+const decreaseTaxBtn = document.getElementById("decreaseTax");
+
+// Constants
+const valuePerGood = 10;
 
 // Load saved theme preference
 const savedTheme = localStorage.getItem("theme");
@@ -24,20 +28,40 @@ if (savedTheme === "light") {
   document.body.classList.add("dark-mode");
 }
 
+// Initialize UI
+outputDisplay.textContent = production;
+profitDisplay.textContent = profit.toFixed(2);
+taxRateDisplay.textContent = (taxRate * 100).toFixed(0);
+
 // Clicker logic
 laborButton.addEventListener("click", () => {
   production++;
 
-  // Calculate net profit per good (after tax)
-  const netProfitPerGood = valuePerGood * (1 - taxRate);  // 90% of $10
-  
-  // Add net profit to the total
+  const netProfitPerGood = valuePerGood * (1 - taxRate);
   profit += netProfitPerGood;
 
-  // Update UI
   outputDisplay.textContent = production;
-  profitDisplay.textContent = profit.toFixed(2);  // Show only net profit
+  profitDisplay.textContent = profit.toFixed(2);
 });
+
+// Tax rate increase/decrease
+increaseTaxBtn.addEventListener("click", () => {
+  if (taxRate < 1) {
+    taxRate += 0.01;
+    updateTaxDisplay();
+  }
+});
+
+decreaseTaxBtn.addEventListener("click", () => {
+  if (taxRate > 0) {
+    taxRate -= 0.01;
+    updateTaxDisplay();
+  }
+});
+
+function updateTaxDisplay() {
+  taxRateDisplay.textContent = (taxRate * 100).toFixed(0);
+}
 
 // Theme toggle
 themeToggle.addEventListener("click", () => {
@@ -48,7 +72,7 @@ themeToggle.addEventListener("click", () => {
   localStorage.setItem("theme", currentTheme);
 });
 
-// Settings menu open/close
+// Settings menu toggle
 settingsBtn.addEventListener("click", () => {
   settingsMenu.classList.remove("hidden");
 });
