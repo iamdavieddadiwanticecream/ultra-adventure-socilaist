@@ -161,6 +161,20 @@ button:focus {
 }
 
 /* ========================
+   Reset Game Button
+======================== */
+#resetGameBtn {
+  background-color: #ffc107; /* warning yellow */
+  color: black;
+  border-color: #e0a800;
+  margin-top: 10px;
+}
+
+#resetGameBtn:hover {
+  background-color: #e0a800;
+}
+
+/* ========================
    Responsive Design
 ======================== */
 @media (max-width: 600px) {
