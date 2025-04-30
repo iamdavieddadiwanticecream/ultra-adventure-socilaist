@@ -49,14 +49,14 @@ laborButton.addEventListener("click", () => {
 // Tax rate control (increase/decrease)
 increaseTaxBtn.addEventListener("click", () => {
   if (taxRate < 100) {
-    taxRate += 1; // Increment tax rate by 1%
+    taxRate += 5; // Increment tax rate by 5%
     updateTaxDisplay();
   }
 });
 
 decreaseTaxBtn.addEventListener("click", () => {
   if (taxRate > 0) {
-    taxRate -= 1; // Decrease tax rate by 1%
+    taxRate -= 5; // Decrease tax rate by 5%
     updateTaxDisplay();
   }
 });
