@@ -46,7 +46,6 @@ laborButton.addEventListener("click", () => {
   profitDisplay.textContent = profit.toFixed(2);
 });
 
-// Tax rate control (increase/decrease)
 increaseTaxBtn.addEventListener("click", () => {
   if (taxRate < 100) {
     taxRate += 5; // Increment tax rate by 5%
