@@ -1,7 +1,11 @@
-// Initial values
-let production = 0;
-let profit = 0;
-let taxRate = 10; // Leader gets 10% of consumer profit (i.e., $1 per $10)
+// Load saved data
+const savedGame = loadGameState();
+let production = savedGame.production;
+let profit = savedGame.profit;
+let taxRate = savedGame.taxRate;
+
+// Inside event listeners, call:
+saveGameState(production, profit, taxRate);
 
 // DOM Elements
 const outputDisplay = document.getElementById("score");
