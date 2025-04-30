@@ -11,6 +11,7 @@ const taxRateDisplay = document.getElementById("taxRateDisplay");
 
 const laborButton = document.getElementById("clickBtn");
 const themeToggle = document.getElementById("themeToggle");
+const resetGameBtn = document.getElementById("resetGameBtn");
 
 const settingsBtn = document.getElementById("settingsBtn");
 const settingsMenu = document.getElementById("settingsMenu");
@@ -92,6 +93,12 @@ closeSettings.addEventListener("click", () => {
   settingsMenu.classList.add("hidden");
 });
 
+resetGameBtn.addEventListener("click", () => {
+  if (confirm("Are you sure you want to reset the game? This cannot be undone.")) {
+    resetGame();
+  }
+});
+
 // Property menu toggle
 propertyMenuBtn.addEventListener("click", () => {
   propertyMenu.classList.toggle("hidden");
@@ -99,3 +106,8 @@ propertyMenuBtn.addEventListener("click", () => {
 closePropertyBtn.addEventListener("click", () => {
   propertyMenu.classList.add("hidden");
 });
+
+function resetGame() {
+  localStorage.removeItem("myGame_gameData");
+  location.reload();
+}
