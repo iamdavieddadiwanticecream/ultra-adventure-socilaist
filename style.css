@@ -88,6 +88,13 @@ body.light-mode .settings-menu {
   margin: 5px;          /* Smaller margin */
 }
 
+/* Smaller "Increase Tax" and "Decrease Tax" Buttons */
+#increaseTax, #decreaseTax {
+  padding: 8px 16px;   /* Smaller padding */
+  font-size: 14px;      /* Smaller font size */
+  margin: 5px;          /* Smaller margin */
+}
+
 /* Optional: To keep the settings button unchanged, we don't need any modifications */
 
 /* Button focus styles */
