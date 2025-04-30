@@ -1,7 +1,7 @@
 // Initial values
 let production = 0;
 let profit = 0;
-let taxRate = 0.1; // Player receives 10%
+let taxRate = 0.1; // Player earns 10% of $10 consumer profit
 
 // DOM Elements
 const outputDisplay = document.getElementById("score");
@@ -18,7 +18,7 @@ const increaseTaxBtn = document.getElementById("increaseTax");
 const decreaseTaxBtn = document.getElementById("decreaseTax");
 
 // Constants
-const valuePerGood = 10; // Each good is worth $10
+const valuePerGood = 10; // Consumer profit per good
 
 // Load saved theme preference
 const savedTheme = localStorage.getItem("theme");
@@ -33,18 +33,18 @@ outputDisplay.textContent = production;
 profitDisplay.textContent = profit.toFixed(2);
 taxRateDisplay.textContent = (taxRate * 100).toFixed(0);
 
-// Clicker logic — player earns tax share
+// Clicker logic — player gets tax % of consumer profit
 laborButton.addEventListener("click", () => {
   production++;
 
-  const taxEarnings = valuePerGood * taxRate;
-  profit += taxEarnings;
+  const leaderCut = valuePerGood * taxRate;
+  profit += leaderCut;
 
   outputDisplay.textContent = production;
   profitDisplay.textContent = profit.toFixed(2);
 });
 
-// Tax rate increase/decrease
+// Tax rate control
 increaseTaxBtn.addEventListener("click", () => {
   if (taxRate < 1) {
     taxRate += 0.01;
