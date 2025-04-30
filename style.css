@@ -162,3 +162,172 @@ button:focus {
 button:active {
   transform: scale(0.98);
 }
+/* ========================
+   Shared Styling
+======================== */
+body {
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  margin-top: 50px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 2px solid;
+  cursor: pointer;
+  margin: 10px;
+}
+
+/* ========================
+   Light Theme
+======================== */
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.light-mode button {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+body.light-mode button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* ========================
+   Dark Theme
+======================== */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode button {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+body.dark-mode button:hover {
+  background-color: #ffffff;
+  color: #121212;
+}
+
+/* ========================
+   Settings Button (Top Left)
+======================== */
+.top-left {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+/* ========================
+   Settings Menu
+======================== */
+.settings-menu {
+  position: fixed;
+  top: 60px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 999;
+  width: 220px;
+}
+
+body.light-mode .settings-menu {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ccc;
+}
+
+/* ========================
+   Hidden Elements
+======================== */
+.hidden {
+  display: none;
+}
+
+/* ========================
+   "Organize Labor" Button
+======================== */
+#clickBtn {
+  padding: 8px 16px;
+  font-size: 14px;
+  margin: 5px;
+}
+
+/* ========================
+   Smaller Tax Buttons
+======================== */
+#increaseTax, #decreaseTax {
+  padding: 8px 16px;
+  font-size: 14px;
+  margin: 5px;
+}
+
+/* Optional: Add color for clarity */
+#increaseTax {
+  background-color: #28a745; /* green */
+  color: white;
+  border-color: #1e7e34;
+}
+
+#increaseTax:hover {
+  background-color: #218838;
+}
+
+#decreaseTax {
+  background-color: #dc3545; /* red */
+  color: white;
+  border-color: #c82333;
+}
+
+#decreaseTax:hover {
+  background-color: #bd2130;
+}
+
+/* ========================
+   Button Focus Style (Accessibility)
+======================== */
+button:focus {
+  outline: 3px solid #ff6600;
+}
+
+/* ========================
+   Responsive Design
+======================== */
+@media (max-width: 600px) {
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .settings-menu {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+  }
+}
+
+/* ========================
+   Button Click Feedback
+======================== */
+button:active {
+  transform: scale(0.98);
+}
+/* Right-align Net Profit (Protites) */
+.right-align {
+  text-align: right; /* Aligns text to the right */
+  margin-right: 20px; /* Adds some spacing from the right edge */
+}
