@@ -8,28 +8,44 @@
 </head>
 <body>
   <!-- Settings Button -->
-  <button id="settingsBtn" class="top-left">⚙ Settings</button>
+  <button id="settingsBtn" class="top-left" aria-label="Open settings menu">⚙ Settings</button>
 
   <!-- Hidden Settings Menu -->
-  <div id="settingsMenu" class="settings-menu hidden">
+  <div id="settingsMenu" class="settings-menu hidden" aria-labelledby="settingsBtn">
     <h3>Settings</h3>
-    <button id="themeToggle">Toggle Dark/Light Mode</button>
-    <button id="closeSettings">Close</button>
+    <button id="themeToggle" aria-label="Toggle Dark/Light Mode">Toggle Dark/Light Mode</button>
+    <button id="closeSettings" aria-label="Close settings menu">Close</button>
+  </div>
+
+  <!-- Property Menu on the right -->
+  <div id="propertyMenu" class="settings-menu hidden" aria-labelledby="settingsBtn">
+    <h3>Property Menu</h3>
+    <p>Property Value: <span id="propertyValue">100</span></p>
+    <button id="increaseProperty" aria-label="Increase Property Value">Increase Property</button>
+    <button id="decreaseProperty" aria-label="Decrease Property Value">Decrease Property</button>
+    <button id="closeProperty" aria-label="Close property menu">Close</button>
   </div>
 
   <!-- Game UI -->
-  <h1>The Adventure-Socialist</h1>
-  <p>Consumer Goods Produced: <span id="score">0</span></p>
-  
-  <!-- Right-aligned Net Profit -->
-  <p class="right-align">Net Profit: $<span id="profit">0</span></p>
+  <main>
+    <h1>The Adventure-Socialist</h1>
+    <section>
+      <p>Consumer Goods Produced: <span id="score">0</span></p>
+      
+      <!-- Right-aligned Net Profit -->
+      <p class="right-align">Net Profit: $<span id="profit">0</span></p>
+    </section>
 
-  <button id="clickBtn">Organize Labor</button>
-  <div>
-    <p>Tax Rate: <span id="taxRateDisplay">10</span>%</p>
-    <button id="decreaseTax">− Decrease Tax</button>
-    <button id="increaseTax">+ Increase Tax</button>
-  </div>
+    <section>
+      <button id="clickBtn">Organize Labor</button>
+    </section>
+
+    <section>
+      <p>Tax Rate: <span id="taxRateDisplay">10</span>%</p>
+      <button id="decreaseTax" aria-label="Decrease tax rate">− Decrease Tax</button>
+      <button id="increaseTax" aria-label="Increase tax rate">+ Increase Tax</button>
+    </section>
+  </main>
 
   <!-- Save/Load functionality must load first -->
   <script src="save.js"></script>
