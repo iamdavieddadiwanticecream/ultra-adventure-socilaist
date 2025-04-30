@@ -87,6 +87,27 @@ body.light-mode .settings-menu {
 }
 
 /* ========================
+   Property Menu (Right-aligned)
+======================== */
+#propertyMenu {
+  position: fixed;
+  top: 60px;
+  right: 10px; /* Aligns to the right */
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 999;
+  width: 220px;
+}
+
+body.light-mode #propertyMenu {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ccc;
+}
+
+/* ========================
    Hidden Elements
 ======================== */
 .hidden {
@@ -148,7 +169,7 @@ button:focus {
     font-size: 16px;
   }
 
-  .settings-menu {
+  .settings-menu, #propertyMenu {
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
