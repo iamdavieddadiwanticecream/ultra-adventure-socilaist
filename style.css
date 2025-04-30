@@ -1,4 +1,6 @@
-/* Shared styling */
+/* ========================
+   Shared Styling
+======================== */
 body {
   font-family: 'Courier New', monospace;
   text-align: center;
@@ -15,7 +17,9 @@ button {
   margin: 10px;
 }
 
-/* Light theme */
+/* ========================
+   Light Theme
+======================== */
 body.light-mode {
   background-color: #ffffff;
   color: #000000;
@@ -32,7 +36,9 @@ body.light-mode button:hover {
   color: #ffffff;
 }
 
-/* Dark theme */
+/* ========================
+   Dark Theme
+======================== */
 body.dark-mode {
   background-color: #121212;
   color: #f0f0f0;
@@ -49,7 +55,9 @@ body.dark-mode button:hover {
   color: #121212;
 }
 
-/* Settings Button - Top Left */
+/* ========================
+   Settings Button (Top Left)
+======================== */
 .top-left {
   position: fixed;
   top: 10px;
@@ -57,7 +65,9 @@ body.dark-mode button:hover {
   z-index: 1000;
 }
 
-/* Settings Menu */
+/* ========================
+   Settings Menu
+======================== */
 .settings-menu {
   position: fixed;
   top: 60px;
@@ -76,33 +86,62 @@ body.light-mode .settings-menu {
   border: 1px solid #ccc;
 }
 
-/* Hide elements */
+/* ========================
+   Hidden Elements
+======================== */
 .hidden {
   display: none;
 }
 
-/* Smaller "Organize Labor" Button */
+/* ========================
+   "Organize Labor" Button
+======================== */
 #clickBtn {
-  padding: 8px 16px;   /* Smaller padding */
-  font-size: 14px;      /* Smaller font size */
-  margin: 5px;          /* Smaller margin */
+  padding: 8px 16px;
+  font-size: 14px;
+  margin: 5px;
 }
 
-/* Smaller "Increase Tax" and "Decrease Tax" Buttons */
+/* ========================
+   Smaller Tax Buttons
+======================== */
 #increaseTax, #decreaseTax {
-  padding: 8px 16px;   /* Smaller padding */
-  font-size: 14px;      /* Smaller font size */
-  margin: 5px;          /* Smaller margin */
+  padding: 8px 16px;
+  font-size: 14px;
+  margin: 5px;
 }
 
-/* Optional: To keep the settings button unchanged, we don't need any modifications */
+/* Optional: Add color for clarity */
+#increaseTax {
+  background-color: #28a745; /* green */
+  color: white;
+  border-color: #1e7e34;
+}
 
-/* Button focus styles */
+#increaseTax:hover {
+  background-color: #218838;
+}
+
+#decreaseTax {
+  background-color: #dc3545; /* red */
+  color: white;
+  border-color: #c82333;
+}
+
+#decreaseTax:hover {
+  background-color: #bd2130;
+}
+
+/* ========================
+   Button Focus Style (Accessibility)
+======================== */
 button:focus {
-  outline: 3px solid #ff6600; /* or any color that contrasts well */
+  outline: 3px solid #ff6600;
 }
 
-/* Responsive Design */
+/* ========================
+   Responsive Design
+======================== */
 @media (max-width: 600px) {
   button {
     padding: 10px 20px;
@@ -113,11 +152,13 @@ button:focus {
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;  /* Make it more mobile-friendly */
+    width: 90%;
   }
 }
 
-/* Button active state */
+/* ========================
+   Button Click Feedback
+======================== */
 button:active {
-  transform: scale(0.98); /* Slightly reduces size on click */
+  transform: scale(0.98);
 }
