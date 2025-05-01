@@ -3,7 +3,6 @@
 ======================== */
 body {
   font-family: 'Courier New', monospace;
-  text-align: center;
   margin-top: 50px;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -15,6 +14,34 @@ button {
   border: 2px solid;
   cursor: pointer;
   margin: 10px;
+}
+
+/* ========================
+   Layout
+======================== */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.right-flex {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+section {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 20px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.light-mode section {
+  background-color: #f9f9f9;
 }
 
 /* ========================
@@ -56,131 +83,29 @@ body.dark-mode button:hover {
 }
 
 /* ========================
-   Settings Button (Top Left)
-======================== */
-.top-left {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-}
-
-/* ========================
-   Settings Menu
-======================== */
-.settings-menu {
-  position: fixed;
-  top: 60px;
-  left: 10px;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
-  padding: 20px;
-  border-radius: 8px;
-  z-index: 999;
-  width: 220px;
-}
-
-body.light-mode .settings-menu {
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid #ccc;
-}
-
-/* ========================
-   Property Menu (Right-aligned)
-======================== */
-#propertyMenu {
-  position: fixed;
-  top: 60px;
-  right: 10px; /* Aligns to the right */
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
-  padding: 20px;
-  border-radius: 8px;
-  z-index: 999;
-  width: 220px;
-}
-
-body.light-mode #propertyMenu {
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid #ccc;
-}
-
-/* ========================
-   Hidden Elements
-======================== */
-.hidden {
-  display: none;
-}
-
-/* ========================
-   "Organize Labor" Button
-======================== */
-#clickBtn {
-  padding: 8px 16px;
-  font-size: 14px;
-  margin: 5px;
-}
-
-/* ========================
-   Smaller Tax Buttons
-======================== */
-#increaseTax, #decreaseTax {
-  padding: 8px 16px;
-  font-size: 14px;
-  margin: 5px;
-}
-
-/* Optional: Add color for clarity */
-#increaseTax {
-  background-color: #28a745; /* green */
-  color: white;
-  border-color: #1e7e34;
-}
-
-#increaseTax:hover {
-  background-color: #218838;
-}
-
-#decreaseTax {
-  background-color: #dc3545; /* red */
-  color: white;
-  border-color: #c82333;
-}
-
-#decreaseTax:hover {
-  background-color: #bd2130;
-}
-
-/* ========================
-   Button Focus Style (Accessibility)
+   Button Feedback
 ======================== */
 button:focus {
   outline: 3px solid #ff6600;
 }
 
-/* ========================
-   Reset Game Button
-======================== */
-#resetGameBtn {
-  background-color: #ffc107; /* warning yellow */
-  color: black;
-  border-color: #e0a800;
-  margin-top: 10px;
-}
-
-#resetGameBtn:hover {
-  background-color: #e0a800;
+button:active {
+  transform: scale(0.98);
 }
 
 /* ========================
-   Responsive Design
+   Responsive
 ======================== */
 @media (max-width: 600px) {
   button {
     padding: 10px 20px;
     font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  main {
+    padding: 10px;
   }
 
   .settings-menu, #propertyMenu {
@@ -192,25 +117,47 @@ button:focus {
 }
 
 /* ========================
-   Button Click Feedback
+   Fixed Buttons
 ======================== */
-button:active {
-  transform: scale(0.98);
+.top-left {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+.top-right {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
 }
 
 /* ========================
-   Right-align Net Profit (Profit)
+   Sliding Menus
 ======================== */
-.right-flex {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 20px;
-}
-
-main {
-  max-width: 800px;
-  margin: 0 auto;
+.settings-menu {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
   padding: 20px;
-  text-align: left; /* optional — keeps content readable instead of all center-aligned */
+  border-radius: 8px;
+  z-index: 999;
+  width: 220px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.settings-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+body.light-mode .settings-menu {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ccc;
+}
