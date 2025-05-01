@@ -85,12 +85,11 @@ themeToggle.addEventListener("click", () => {
   localStorage.setItem("theme", currentTheme);
 });
 
-// Settings menu toggle
 settingsBtn.addEventListener("click", () => {
-  settingsMenu.classList.remove("hidden");
+  settingsMenu.classList.add("show");
 });
 closeSettings.addEventListener("click", () => {
-  settingsMenu.classList.add("hidden");
+  settingsMenu.classList.remove("show");
 });
 
 resetGameBtn.addEventListener("click", () => {
@@ -101,10 +100,10 @@ resetGameBtn.addEventListener("click", () => {
 
 // Property menu toggle
 propertyMenuBtn.addEventListener("click", () => {
-  propertyMenu.classList.toggle("hidden");
+  propertyMenu.classList.toggle("show");
 });
 closePropertyBtn.addEventListener("click", () => {
-  propertyMenu.classList.add("hidden");
+  propertyMenu.classList.remove("show");
 });
 
 function resetGame() {
