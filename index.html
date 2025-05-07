@@ -13,31 +13,34 @@
   <!-- Hidden Settings Menu -->
   <div id="settingsMenu" class="settings-menu hidden" aria-labelledby="settingsBtn">
     <h3>Settings</h3>
-    <button id="themeToggle" aria-label="Toggle Dark/Light Mode">Toggle Dark/Light Mode</button>
-    <button id="resetGameBtn" aria-label="Reset game state">🔁 Reset Game</button>
-    <button id="closeSettings" aria-label="Close settings menu">Close</button>
+    <button id="themeToggle">Toggle Dark/Light Mode</button>
+    <button id="resetGameBtn">🔁 Reset Game</button>
+    <button id="closeSettings">Close</button>
   </div>
 
   <!-- Property Button -->
   <button id="propertyBtn" class="top-right" aria-label="Open property menu">🏠 Property</button>
-  
-  <!-- Property Menu on the right -->
+
+  <!-- Property Menu -->
   <div id="propertyMenu" class="settings-menu hidden" aria-labelledby="propertyBtn">
     <h3>Property Menu</h3>
-
-    <!-- City Menu -->
     <button id="cityBtn">City</button>
 
+    <!-- City Menu -->
     <div id="cityMenu" class="hidden">
       <h4>City Structures</h4>
       <button id="shedBtn">Shed</button>
       <button id="houseBtn">House</button>
-      <!-- Future structures can be added here -->
+      <button id="smelterBtn">Smelter</button>
+      <p id="smelterStatus">Status: Not Built</p>
     </div>
+
+    <button id="openJobsBtn">Jobs</button>
 
     <!-- Jobs Menu -->
     <div id="jobsMenu" class="hidden">
       <h3>Jobs</h3>
+
       <div class="job">
         <p>Wood: <span id="woodCount">0</span></p>
         <button id="startWoodcutting">Start Cutting Tree</button>
@@ -59,7 +62,7 @@
       <button id="closeJobs">Close Jobs</button>
     </div>
 
-    <button id="closeProperty" aria-label="Close property menu">Close</button>
+    <button id="closeProperty">Close</button>
   </div>
 
   <!-- Game UI -->
@@ -67,8 +70,6 @@
     <h1>The Adventure-Socialist</h1>
     <section>
       <p>Consumer Goods Produced: <span id="score">0</span></p>
-      
-      <!-- Right-aligned Net Profit -->
       <div class="right-flex">
         <p>Net Profit: $<span id="profit">0</span></p>
       </div>
@@ -80,14 +81,11 @@
 
     <section>
       <p>Tax Rate: <span id="taxRateDisplay">10</span>%</p>
-      <button id="decreaseTax" aria-label="Decrease tax rate">− Decrease Tax</button>
-      <button id="increaseTax" aria-label="Increase tax rate">+ Increase Tax</button>
+      <button id="decreaseTax">− Decrease Tax</button>
+      <button id="increaseTax">+ Increase Tax</button>
     </section>
   </main>
 
-  <!-- Save/Load functionality must load first -->
-  <script src="save.js"></script>
-  <!-- Main game logic -->
   <script src="script.js"></script>
 </body>
 </html>
