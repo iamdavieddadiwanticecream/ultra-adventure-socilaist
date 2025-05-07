@@ -161,3 +161,66 @@ body.light-mode .settings-menu {
   color: #000000;
   border: 1px solid #ccc;
 }
+/* ========================
+   City and Jobs Menus
+======================== */
+#cityMenu,
+#jobsMenu {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 998;
+  width: 240px;
+  display: none;
+}
+
+#cityMenu button,
+#jobsMenu button {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#cityMenu p,
+#jobsMenu p {
+  margin: 10px 0;
+}
+
+#cityMenu.show,
+#jobsMenu.show {
+  display: block;
+}
+
+body.light-mode #cityMenu,
+body.light-mode #jobsMenu {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ccc;
+}
+
+/* ========================
+   Resource Counters
+======================== */
+#resourcesDisplay {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+#resourcesDisplay p {
+  margin: 5px 10px;
+  font-weight: bold;
+}
+
+/* ========================
+   Progress Text
+======================== */
+.job-progress {
+  font-size: 14px;
+  color: #ffcc00;
+  margin-top: 5px;
+  font-style: italic;
+}
