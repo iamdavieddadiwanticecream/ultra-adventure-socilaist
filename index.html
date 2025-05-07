@@ -24,7 +24,41 @@
   <!-- Property Menu on the right -->
   <div id="propertyMenu" class="settings-menu hidden" aria-labelledby="propertyBtn">
     <h3>Property Menu</h3>
-    <p>No properties yet. Coming soon!</p>
+
+    <!-- City Menu -->
+    <button id="cityBtn">City</button>
+
+    <div id="cityMenu" class="hidden">
+      <h4>City Structures</h4>
+      <button id="shedBtn">Shed</button>
+      <button id="houseBtn">House</button>
+      <!-- Future structures can be added here -->
+    </div>
+
+    <!-- Jobs Menu -->
+    <div id="jobsMenu" class="hidden">
+      <h3>Jobs</h3>
+      <div class="job">
+        <p>Wood: <span id="woodCount">0</span></p>
+        <button id="startWoodcutting">Start Cutting Tree</button>
+        <p id="woodProgress">Idle</p>
+      </div>
+
+      <div class="job">
+        <p>Iron: <span id="ironCount">0</span></p>
+        <button id="startIronMining">Start Mining Iron</button>
+        <p id="ironProgress">Idle</p>
+      </div>
+
+      <div class="job">
+        <p>Nails: <span id="nailsCount">0</span></p>
+        <button id="startSmelting">Start Smelting Nails</button>
+        <p id="smelterProgress">Idle</p>
+      </div>
+
+      <button id="closeJobs">Close Jobs</button>
+    </div>
+
     <button id="closeProperty" aria-label="Close property menu">Close</button>
   </div>
 
@@ -35,10 +69,9 @@
       <p>Consumer Goods Produced: <span id="score">0</span></p>
       
       <!-- Right-aligned Net Profit -->
-   <div class="right-flex">
-  <p>Net Profit: $<span id="profit">0</span></p>
-</div>
-
+      <div class="right-flex">
+        <p>Net Profit: $<span id="profit">0</span></p>
+      </div>
     </section>
 
     <section>
