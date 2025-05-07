@@ -1,4 +1,4 @@
-// Load saved data
+// Game State
 const savedGame = loadGameState();
 let production = savedGame.production;
 let profit = savedGame.profit;
@@ -7,6 +7,11 @@ let wood = savedGame.wood || 0;
 let iron = savedGame.iron || 0;
 let nails = savedGame.nails || 0;
 let smelterBuilt = savedGame.smelterBuilt || false;
+
+const valuePerGood = 10;
+const TREE_CUT_TIME = 5;
+const IRON_MINE_TIME = 10;
+const SMELT_NAIL_TIME = 10;
 
 // DOM Elements
 const outputDisplay = document.getElementById("score");
@@ -32,6 +37,7 @@ const houseBtn = document.getElementById("houseBtn");
 const smelterBtn = document.getElementById("smelterBtn");
 const smelterStatus = document.getElementById("smelterStatus");
 
+const openJobsBtn = document.getElementById("openJobsBtn");
 const jobsMenu = document.getElementById("jobsMenu");
 const startWoodcutting = document.getElementById("startWoodcutting");
 const startIronMining = document.getElementById("startIronMining");
@@ -40,15 +46,7 @@ const startSmelting = document.getElementById("startSmelting");
 const woodProgress = document.getElementById("woodProgress");
 const ironProgress = document.getElementById("ironProgress");
 const smelterProgress = document.getElementById("smelterProgress");
-
 const closeJobsBtn = document.getElementById("closeJobs");
-
-const valuePerGood = 10;
-
-// Job times (seconds)
-const TREE_CUT_TIME = 5;
-const IRON_MINE_TIME = 10;
-const SMELT_NAIL_TIME = 10;
 
 // Load theme
 const savedTheme = localStorage.getItem("theme");
@@ -58,7 +56,7 @@ if (savedTheme === "light") {
   document.body.classList.add("dark-mode");
 }
 
-// Save/load functions
+// Functions
 function saveGameState() {
   const gameData = {
     production,
@@ -74,15 +72,7 @@ function saveGameState() {
 
 function loadGameState() {
   const saved = JSON.parse(localStorage.getItem("myGame_gameData"));
-  if (
-    saved &&
-    typeof saved.production === "number" &&
-    typeof saved.profit === "number" &&
-    typeof saved.taxRate === "number"
-  ) {
-    return saved;
-  }
-  return {
+  return saved || {
     production: 0,
     profit: 0,
     taxRate: 10,
@@ -93,7 +83,6 @@ function loadGameState() {
   };
 }
 
-// Update UI
 function updateUI() {
   outputDisplay.textContent = production;
   profitDisplay.textContent = profit.toFixed(2);
@@ -104,7 +93,6 @@ function updateUI() {
   smelterStatus.textContent = `Status: ${smelterBuilt ? "Built" : "Not Built"}`;
 }
 
-// Job progress handler
 function startJobProgress(jobType) {
   let progressElement, timeRequired, resourceName;
 
@@ -145,18 +133,14 @@ function startJobProgress(jobType) {
   }, 1000);
 }
 
-// Event listeners
-
-// Clicker logic
+// Event Listeners
 laborButton.addEventListener("click", () => {
   production++;
-  const leaderCut = valuePerGood * (taxRate / 100);
-  profit += leaderCut;
+  profit += valuePerGood * (taxRate / 100);
   updateUI();
   saveGameState();
 });
 
-// Tax rate buttons
 document.getElementById("increaseTax").addEventListener("click", () => {
   if (taxRate < 100) {
     taxRate += 5;
@@ -173,16 +157,12 @@ document.getElementById("decreaseTax").addEventListener("click", () => {
   }
 });
 
-// Theme toggle
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
   document.body.classList.toggle("light-mode");
-
-  const currentTheme = document.body.classList.contains("light-mode") ? "light" : "dark";
-  localStorage.setItem("theme", currentTheme);
+  localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
 });
 
-// Menu controls
 settingsBtn.addEventListener("click", () => {
   settingsMenu.classList.add("show");
 });
@@ -190,11 +170,12 @@ closeSettings.addEventListener("click", () => {
   settingsMenu.classList.remove("show");
 });
 resetGameBtn.addEventListener("click", () => {
-  if (confirm("Are you sure you want to reset the game? This cannot be undone.")) {
+  if (confirm("Reset the game?")) {
     localStorage.removeItem("myGame_gameData");
     location.reload();
   }
 });
+
 propertyMenuBtn.addEventListener("click", () => {
   propertyMenu.classList.toggle("show");
 });
@@ -202,12 +183,10 @@ closePropertyBtn.addEventListener("click", () => {
   propertyMenu.classList.remove("show");
 });
 
-// City menu
 cityBtn.addEventListener("click", () => {
   cityMenu.classList.toggle("hidden");
 });
 
-// Shed building
 shedBtn.addEventListener("click", () => {
   if (wood >= 5 && nails >= 5) {
     wood -= 5;
@@ -216,11 +195,10 @@ shedBtn.addEventListener("click", () => {
     updateUI();
     saveGameState();
   } else {
-    alert("You need 5 wood and 5 nails to build a shed.");
+    alert("Need 5 wood and 5 nails!");
   }
 });
 
-// Smelter building
 smelterBtn.addEventListener("click", () => {
   if (!smelterBuilt) {
     if (wood >= 10 && nails >= 5) {
@@ -231,14 +209,20 @@ smelterBtn.addEventListener("click", () => {
       updateUI();
       saveGameState();
     } else {
-      alert("You need 10 wood and 5 nails to build a smelter.");
+      alert("Need 10 wood and 5 nails to build smelter.");
     }
   } else {
-    alert("Smelter is already built.");
+    alert("Smelter already built.");
   }
 });
 
-// Jobs
+openJobsBtn.addEventListener("click", () => {
+  jobsMenu.classList.remove("hidden");
+});
+closeJobsBtn.addEventListener("click", () => {
+  jobsMenu.classList.add("hidden");
+});
+
 startWoodcutting.addEventListener("click", () => {
   if (woodProgress.textContent === "Idle" || woodProgress.textContent.includes("Done")) {
     startJobProgress("woodcutting");
@@ -251,21 +235,15 @@ startIronMining.addEventListener("click", () => {
 });
 startSmelting.addEventListener("click", () => {
   if (!smelterBuilt) {
-    alert("You need to build a smelter first!");
+    alert("Build a smelter first!");
     return;
   }
-  if (smelterProgress.textContent === "Idle" || smelterProgress.textContent.includes("Done")) {
-    if (iron >= 1) {
-      iron--;
-      startJobProgress("smelting");
-    } else {
-      alert("You need at least 1 iron to smelt nails.");
-    }
+  if (iron >= 1) {
+    iron--;
+    startJobProgress("smelting");
+  } else {
+    alert("Need iron to smelt nails.");
   }
 });
-closeJobsBtn.addEventListener("click", () => {
-  jobsMenu.classList.add("hidden");
-});
 
-// Initial UI update
 updateUI();
